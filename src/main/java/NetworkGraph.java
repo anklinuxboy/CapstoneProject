@@ -103,4 +103,8 @@ public class NetworkGraph implements Graph {
 
         return false;
     }
+
+    public HashSet<Integer> naiveDominatingSet() {
+        return null;
+    }
 }

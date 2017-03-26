@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class LoadGraph {
 
-    private static String FILENAME = "src/data/test_graph3.txt";
+    private static String FILENAME = "src/data/p2p-Gnutella04.txt";
 
     public static NetworkGraph loadGraph() {
         NetworkGraph graph = new NetworkGraph();
@@ -23,7 +23,7 @@ public class LoadGraph {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 // The dataset is in the form of "key neighbor" so this approach works.
-                String[] numbers = line.split(" ");
+                String[] numbers = line.split("\\s+");
                 int follower = Integer.parseInt(numbers[0]);
                 int followed = Integer.parseInt(numbers[1]);
                 graph.addEdge(follower, followed);
