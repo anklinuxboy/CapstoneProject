@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by ankit on 3/13/17.
@@ -13,6 +14,8 @@ public interface Graph {
     public int getNumberOfVertices();
 
     public int getNumberOfEdges();
+
+    public Set<Integer> getKeys();
 
     public void printGraph();
 

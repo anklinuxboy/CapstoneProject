@@ -8,6 +8,7 @@ import java.util.*;
 public class NetworkGraph implements Graph {
 
     private Map<Integer, HashSet<Integer>> graph;
+    private GraphAlgorithms algorithms;
     int vertices;
     int edges;
 
@@ -15,6 +16,7 @@ public class NetworkGraph implements Graph {
         graph = new HashMap<>();
         vertices = 0;
         edges = 0;
+        algorithms = new GraphAlgorithms();
     }
 
     @Override
@@ -45,6 +47,11 @@ public class NetworkGraph implements Graph {
     }
 
     @Override
+    public Set<Integer> getKeys() {
+        return graph.keySet();
+    }
+
+    @Override
     public void printGraph() {
         for (int key : graph.keySet()) {
             System.out.println("Key: " + key + ", Neighbors: " + graph.get(key));
@@ -64,7 +71,6 @@ public class NetworkGraph implements Graph {
             throw new IllegalArgumentException();
         }
 
-        //
         int source = -1, destination = -1;
         if (graph.containsKey(v)) {
             source = v;
@@ -74,37 +80,10 @@ public class NetworkGraph implements Graph {
             destination = v;
         }
 
-        return BFS(source, destination);
+        return algorithms.BFS(this, source, destination);
     }
 
-    private boolean BFS(int source, int destination) {
-        HashSet<Integer> visited = new HashSet<>();
-        Queue<Integer> nodes = new LinkedList<>();
-
-        visited.add(source);
-        nodes.add(source);
-
-        // there will only be a path if atleast one of the vertex follows someone in the graph
-        while (!nodes.isEmpty()) {
-            int node = nodes.remove();
-            if (node == destination)
-                return true;
-
-            HashSet<Integer> neighbors = getNeighbors(node);
-            if (neighbors != null) {
-                for (int neighbor : neighbors) {
-                    if (!visited.contains(neighbor)) {
-                        visited.add(neighbor);
-                        nodes.add(neighbor);
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    public HashSet<Integer> naiveDominatingSet() {
-        return null;
+    public HashSet<Integer> getDominatingSet() {
+        return algorithms.naiveDominatingSet(this);
     }
 }

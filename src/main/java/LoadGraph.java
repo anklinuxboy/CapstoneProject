@@ -11,14 +11,12 @@ import java.util.Scanner;
  */
 public class LoadGraph {
 
-    private static String FILENAME = "src/data/p2p-Gnutella04.txt";
-
-    public static NetworkGraph loadGraph() {
+    public static NetworkGraph loadGraph(String filename) {
         NetworkGraph graph = new NetworkGraph();
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
-            fileReader = new FileReader(FILENAME);
+            fileReader = new FileReader(filename);
             bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -37,7 +35,6 @@ public class LoadGraph {
             } catch (IOException e) {
                 System.out.println(e.toString());
             }
-
         }
 
         return graph;
