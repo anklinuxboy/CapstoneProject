@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class LoadGraph {
 
-    private static String FILENAME = "src/data/test_graph2.txt";
+    private static String FILENAME = "src/data/test_graph3.txt";
 
     public static NetworkGraph loadGraph() {
         NetworkGraph graph = new NetworkGraph();
